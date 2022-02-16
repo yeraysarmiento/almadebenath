@@ -1,4 +1,5 @@
 import "./App.css";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Gallery from "./components/Gallery/Gallery";
 import Menu from "./components/Menu/Menu";
 import data from "./assets/data";
@@ -28,6 +29,9 @@ function App() {
       <Menu categoriesList={categories} />
       <Gallery collection={data.personal} />
       <Detail picture={data.personal.pictures[0]} />
+      <Routes>
+        <Route path="/" element={<Navigate to="/personal" />} />{" "}
+      </Routes>
     </div>
   );
 }

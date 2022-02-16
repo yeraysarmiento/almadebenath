@@ -1,0 +1,58 @@
+.detail-container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background-color: rgba(175, 174, 174, 0.795);
+
+  & img {
+    max-width: 100%;
+    max-height: 70%;
+  }
+}
+
+.detail {
+  position: relative;
+
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    width: 100%;
+    position: absolute;
+    margin-top: 50px;
+  }
+
+  &__text {
+    font-family: "Roboto", sans-serif;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  &__close {
+    position: absolute;
+    width: 15px;
+    right: 0;
+    top: -50px;
+    cursor: pointer;
+  }
+
+  &__right {
+    width: 30px;
+    top: 100%;
+    cursor: pointer;
+  }
+
+  &__left {
+    width: 30px;
+    transform: rotate(180deg);
+    cursor: pointer;
+  }
+}

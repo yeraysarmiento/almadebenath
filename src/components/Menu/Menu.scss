@@ -5,7 +5,7 @@ header {
   padding: 20px;
   display: flex;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 }
 
 .title {
@@ -74,6 +74,7 @@ header {
   transition: left 0.5s, right 0.5s;
   display: flex;
   align-items: center;
+  z-index: 1;
 
   &.menu-container--open {
     right: 0;

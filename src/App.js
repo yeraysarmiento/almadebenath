@@ -2,6 +2,7 @@ import "./App.css";
 import Gallery from "./components/Gallery/Gallery";
 import Menu from "./components/Menu/Menu";
 import data from "./assets/data";
+import Detail from "./components/Detail/Detail";
 
 function App() {
   const categories = {
@@ -26,6 +27,7 @@ function App() {
     <div className="app">
       <Menu categoriesList={categories} />
       <Gallery collection={data.personal} />
+      <Detail picture={data.personal.pictures[0]} />
     </div>
   );
 }

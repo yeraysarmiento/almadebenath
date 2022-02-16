@@ -1,30 +1,21 @@
 import { useState } from "react";
 import "./Menu.scss";
 
-function Menu() {
+function Menu({ categoriesList }) {
   const [open, setOpen] = useState(false);
   const [onSelected, setOnSelected] = useState(false);
+  const [categories, setCategories] = useState(categoriesList.personal);
 
   const onToggle = () => {
     setOpen(!open);
   };
 
-  const categoriesList = [
-    "copilot",
-    "desert",
-    "facades",
-    "la familie",
-    "on a rock",
-    "polish",
-    "rouge",
-    "stairs",
-    "essentials",
-    "places",
-    "wallpapers",
-  ];
-
   const onSwitch = () => {
     setOnSelected(!onSelected);
+
+    categories === categoriesList.personal
+      ? setCategories(categoriesList.locations)
+      : setCategories(categoriesList.personal);
   };
 
   return (
@@ -46,9 +37,12 @@ function Menu() {
       </header>
       <section
         className={"menu-container" + (open ? " menu-container--open" : "")}
+        style={
+          !onSelected ? { background: "#dfc576" } : { background: "#7C8979" }
+        }
       >
         <ul className="menu">
-          {categoriesList.map((categorie, index) => (
+          {categories.map((categorie, index) => (
             <li className="menu__element" key={index}>
               {categorie.toUpperCase()}
               <span className="menu__line" />
@@ -60,7 +54,14 @@ function Menu() {
           <label className="switch" onChange={onSwitch}>
             <input type="checkbox" />
             <span className="slider">
-              <span className="action"></span>
+              <span
+                className="action"
+                style={
+                  !onSelected
+                    ? { background: "#dfc576" }
+                    : { background: "#5C6D57" }
+                }
+              ></span>
               <p className={onSelected ? "" : "selected"}>personal</p>
               <p className={onSelected ? "selected" : ""}>location</p>
             </span>

@@ -1,10 +1,13 @@
 import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import Gallery from "./components/Gallery/Gallery";
 import Menu from "./components/Menu/Menu";
 import data from "./data";
+import { useEffect } from "react";
 
 function App() {
+  const { pathname } = useLocation();
+
   const getCategories = () => {
     const categories = {
       personal: [],
@@ -23,6 +26,10 @@ function App() {
   };
 
   const categoriesList = getCategories();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 
   return (
     <div className="app">

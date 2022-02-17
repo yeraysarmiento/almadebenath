@@ -10,7 +10,6 @@ function Detail({ picture }) {
       <div className="detail">
         <img className="detail__close" src={closeIcon} alt="close icon" />
         <img src={picture.picture} alt={picture.description} />
-        <h3 className="detail__text">{picture.place.toUpperCase()}</h3>
         <div className="detail__box">
           <img className="detail__left" src={arrowIcon} alt="left arrow icon" />
           <img

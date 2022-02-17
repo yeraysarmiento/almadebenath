@@ -1,9 +1,8 @@
 import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Gallery from "./components/Gallery/Gallery";
 import Menu from "./components/Menu/Menu";
-import data from "./assets/data";
-import Detail from "./components/Detail/Detail";
+import data from "./data";
 
 function App() {
   const categories = {
@@ -27,10 +26,16 @@ function App() {
   return (
     <div className="app">
       <Menu categoriesList={categories} />
-      <Gallery collection={data.personal} />
-      <Detail picture={data.personal.pictures[0]} />
       <Routes>
-        <Route path="/" element={<Navigate to="/personal" />} />{" "}
+        <Route path="/" />
+        <Route
+          path="/personal"
+          element={<Gallery collection={data.personal} />}
+        />
+        <Route
+          path="/location"
+          element={<Gallery collection={data.location} />}
+        />
       </Routes>
     </div>
   );

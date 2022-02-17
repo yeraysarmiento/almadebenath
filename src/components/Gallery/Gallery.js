@@ -1,78 +1,23 @@
+import { useParams } from "react-router-dom";
 import "./Gallery.scss";
-import normandie from "../../img/normandie.jpeg";
 
-function Gallery({ collection }) {
+function Gallery({ theme }) {
+  let { collection } = useParams();
+  const collectionData = theme[collection];
+
   return (
     <main className="gallery-container">
-      <h2 className="gallery-title">{collection.title}</h2>
+      <h2 className="gallery-title">{collectionData.title}</h2>
       <ul className="gallery">
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={normandie} height="155" />
-          <div className="picture__line"></div>
-        </li>
-        <li className="picture">
-          <img alt="" src={collection.pictures[0].picture} height="155" />
-          <div className="picture__line"></div>
-        </li>
+        {collectionData.pictures.map((picture, index) => (
+          <li className="picture" key={index}>
+            <img alt="" src={picture} height="155" />
+            <div className="picture__line"></div>
+          </li>
+        ))}
       </ul>
       <h2 className="gallery-title gallery-title--footer">
-        {collection.title}
+        {collectionData.title}
       </h2>
     </main>
   );

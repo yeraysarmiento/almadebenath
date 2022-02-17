@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./Menu.scss";
 
 function Menu({ categoriesList }) {
@@ -14,7 +15,7 @@ function Menu({ categoriesList }) {
     setOnSelected(!onSelected);
 
     categories === categoriesList.personal
-      ? setCategories(categoriesList.locations)
+      ? setCategories(categoriesList.location)
       : setCategories(categoriesList.personal);
   };
 
@@ -43,10 +44,12 @@ function Menu({ categoriesList }) {
       >
         <ul className="menu">
           {categories.map((categorie, index) => (
-            <li className="menu__element" key={index}>
-              {categorie.toUpperCase()}
-              <span className="menu__line" />
-            </li>
+            <Link to={categorie} key={index}>
+              <li className="menu__element">
+                {categorie.toUpperCase()}
+                <span className="menu__line" />
+              </li>
+            </Link>
           ))}
         </ul>
         <h2 className="menu__element menu__element--about">about</h2>

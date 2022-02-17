@@ -85,9 +85,38 @@ const data = {
       ),
     },
   },
-  location: {},
+  location: {
+    car: {
+      title: "car",
+      pictures: importAll(
+        require.context("./img/location/car", false, /\.(png|jpe?g|svg)$/)
+      ),
+    },
+    drone: {
+      title: "drone",
+      pictures: importAll(
+        require.context("./img/location/drone", false, /\.(png|jpe?g|svg)$/)
+      ),
+    },
+    exterior: {
+      title: "exterior",
+      pictures: importAll(
+        require.context("./img/location/exterior", false, /\.(png|jpe?g|svg)$/)
+      ),
+    },
+    interior: {
+      title: "interior",
+      pictures: importAll(
+        require.context("./img/location/interior", false, /\.(png|jpe?g|svg)$/)
+      ),
+    },
+    nature: {
+      title: "nature",
+      pictures: importAll(
+        require.context("./img/location/nature", false, /\.(png|jpe?g|svg)$/)
+      ),
+    },
+  },
 };
-
-console.log(data);
 
 export default data;

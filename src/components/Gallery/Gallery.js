@@ -1,12 +1,15 @@
+import { useParams } from "react-router-dom";
 import "./Gallery.scss";
 
-function Gallery({ collection }) {
-  console.log(collection);
+function Gallery({ theme }) {
+  let { collection } = useParams();
+  const collectionData = theme[collection];
+
   return (
     <main className="gallery-container">
-      <h2 className="gallery-title">{collection.title}</h2>
+      <h2 className="gallery-title">{collectionData.title}</h2>
       <ul className="gallery">
-        {collection.pictures.map((picture, index) => (
+        {collectionData.pictures.map((picture, index) => (
           <li className="picture" key={index}>
             <img alt="" src={picture} height="155" />
             <div className="picture__line"></div>
@@ -14,7 +17,7 @@ function Gallery({ collection }) {
         ))}
       </ul>
       <h2 className="gallery-title gallery-title--footer">
-        {collection.title}
+        {collectionData.title}
       </h2>
     </main>
   );

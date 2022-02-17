@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./Menu.scss";
 
 function Menu({ categoriesList }) {
   const [open, setOpen] = useState(false);
   const [onSelected, setOnSelected] = useState(false);
   const [categories, setCategories] = useState(categoriesList.personal);
+  const [theme, setTheme] = useState("personal");
+  const navigate = useNavigate();
 
   const onToggle = () => {
     setOpen(!open);
@@ -13,10 +15,16 @@ function Menu({ categoriesList }) {
 
   const onSwitch = () => {
     setOnSelected(!onSelected);
+    setTheme(theme === "personal" ? "location" : "personal");
 
     categories === categoriesList.personal
       ? setCategories(categoriesList.location)
       : setCategories(categoriesList.personal);
+  };
+
+  const onNavigate = (categorie) => {
+    navigate(`${theme}/${categorie}`);
+    setOpen(false);
   };
 
   return (
@@ -44,12 +52,14 @@ function Menu({ categoriesList }) {
       >
         <ul className="menu">
           {categories.map((categorie, index) => (
-            <Link to={categorie} key={index}>
-              <li className="menu__element">
-                {categorie.toUpperCase()}
-                <span className="menu__line" />
-              </li>
-            </Link>
+            <li
+              className="menu__element"
+              key={index}
+              onClick={() => onNavigate(categorie)}
+            >
+              {categorie.toUpperCase()}
+              <span className="menu__line" />
+            </li>
           ))}
         </ul>
         <h2 className="menu__element menu__element--about">about</h2>

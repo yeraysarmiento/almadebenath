@@ -1,8 +1,8 @@
 function importAll(files) {
   let images = {};
-  files.keys().map((item, index) => {
-    images[item.replace("./", "")] = files(item);
-  });
+  files
+    .keys()
+    .map((item, index) => (images[item.replace("./", "")] = files(item)));
   return Object.values(images);
 }
 
